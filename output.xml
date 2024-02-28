@@ -1,0 +1,2372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.0 (Python 3.11.7 on darwin)" generated="20240229 00:52:44.912" rpa="false" schemaversion="3">
+<suite id="s1" name="Test" source="/Users/azizahira/Workspace/Automation/Test">
+<suite id="s1-s1" name="Open Property Url" source="/Users/azizahira/Workspace/Automation/Test/Open Property Url.robot">
+<test id="s1-s1-t1" name="Open All Property For Rent Url" line="14">
+<kw name="Open Homepage" library="TestSetup" type="SETUP">
+<kw name="Open Chrome Browser" library="TestSetup">
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${HEADLESS_BROWSER}'=='true'</arg>
+<arg>Headless Browser Setup</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20240229 00:52:45.840" endtime="20240229 00:52:45.841"/>
+</kw>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>${BROWSER}</arg>
+<arg>alias=chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20240229 00:52:45.842" level="INFO">Opening browser 'gc' to base url 'about:blank'.</msg>
+<status status="PASS" starttime="20240229 00:52:45.841" endtime="20240229 00:52:47.755"/>
+</kw>
+<timeout value="2 minutes"/>
+<status status="PASS" starttime="20240229 00:52:45.839" endtime="20240229 00:52:47.755"/>
+</kw>
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${SERVER}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20240229 00:52:47.756" level="INFO">Opening url 'https://www.99.co/id'</msg>
+<status status="PASS" starttime="20240229 00:52:47.756" endtime="20240229 00:52:48.439"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:45.839" endtime="20240229 00:52:48.439"/>
+</kw>
+<kw name="Scroll To Property Section" library="HomepagePages">
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>class=upperFooter</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20240229 00:52:48.441" endtime="20240229 00:52:48.767"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:48.440" endtime="20240229 00:52:48.768"/>
+</kw>
+<kw name="Open All Property Content by Index" library="HomepageLogic">
+<arg>2</arg>
+<kw name="Verify Property Content Section Is Visible" library="HomepagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>xpath=//div[@class="accordion"]</arg>
+<arg>timeout=${MED_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:52:48.770" endtime="20240229 00:52:48.834"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:48.769" endtime="20240229 00:52:48.834"/>
+</kw>
+<kw name="Click All Property Content by Index" library="HomepagePages">
+<arg>${index}</arg>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>xpath=//div[@class="accordion"][${index}]//button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20240229 00:52:48.835" level="INFO">Clicking button 'xpath=//div[@class="accordion"][2]//button'.</msg>
+<status status="PASS" starttime="20240229 00:52:48.835" endtime="20240229 00:52:49.322"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:48.834" endtime="20240229 00:52:49.322"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:48.768" endtime="20240229 00:52:49.322"/>
+</kw>
+<kw name="Check If Property Content Is Visible" library="HomepageLogic">
+<arg>2</arg>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Wait Until Element Is Visible</arg>
+<arg>css=.accordion-content.showContent</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>css=.accordion-content.showContent</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:52:49.323" endtime="20240229 00:52:49.363"/>
+</kw>
+<msg timestamp="20240229 00:52:49.363" level="INFO">${status} = True</msg>
+<status status="PASS" starttime="20240229 00:52:49.323" endtime="20240229 00:52:49.363"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${status}' == 'False'</arg>
+<arg>HomePageLogic.Open All Property Content by Index</arg>
+<arg>${index}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20240229 00:52:49.363" endtime="20240229 00:52:49.364"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:49.322" endtime="20240229 00:52:49.364"/>
+</kw>
+<kw name="Open Property One By One" library="HomepageLogic">
+<kw name="Get Count Property Content" library="HomepagePages">
+<kw name="Get Element Count" library="SeleniumLibrary">
+<var>${total_content}</var>
+<arg>//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a</arg>
+<doc>Returns the number of elements matching ``locator``.</doc>
+<msg timestamp="20240229 00:52:49.389" level="INFO">${total_content} = 15</msg>
+<status status="PASS" starttime="20240229 00:52:49.365" endtime="20240229 00:52:49.389"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${total_content}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20240229 00:52:49.405" level="INFO">${total_content} = 15</msg>
+<status status="PASS" starttime="20240229 00:52:49.394" endtime="20240229 00:52:49.405"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:49.364" endtime="20240229 00:52:49.405"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${i}</var>
+<value>1</value>
+<value>${total_content+1}</value>
+<iter>
+<var name="${i}">1</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${i}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20240229 00:52:49.408" endtime="20240229 00:52:49.410"/>
+</kw>
+<kw name="Get Property Title" library="HomepagePages">
+<arg>${i}</arg>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${property_title}</var>
+<arg>xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[${index}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20240229 00:52:49.541" level="INFO">${property_title} = Rumah Disewa</msg>
+<status status="PASS" starttime="20240229 00:52:49.411" endtime="20240229 00:52:49.541"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${property_title}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20240229 00:52:49.542" level="INFO">${property_title} = Rumah Disewa</msg>
+<status status="PASS" starttime="20240229 00:52:49.541" endtime="20240229 00:52:49.542"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:49.410" endtime="20240229 00:52:49.542"/>
+</kw>
+<kw name="Get Property Content Url By Index" library="HomepagePages">
+<arg>${i}</arg>
+<kw name="Get Element Attribute" library="SeleniumLibrary">
+<var>${property_url}</var>
+<arg>xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[${index}]</arg>
+<arg>href</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<msg timestamp="20240229 00:52:49.592" level="INFO">${property_url} = https://www.99.co/id/sewa/rumah</msg>
+<status status="PASS" starttime="20240229 00:52:49.543" endtime="20240229 00:52:49.592"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${property_url}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20240229 00:52:49.593" level="INFO">${property_url} = https://www.99.co/id/sewa/rumah</msg>
+<status status="PASS" starttime="20240229 00:52:49.592" endtime="20240229 00:52:49.593"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:49.542" endtime="20240229 00:52:49.593"/>
+</kw>
+<kw name="Click property By Index" library="HomepagePages">
+<arg>${i}</arg>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[${index}]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240229 00:52:49.595" level="INFO">Clicking element 'xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[1]'.</msg>
+<status status="PASS" starttime="20240229 00:52:49.593" endtime="20240229 00:52:50.842"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:49.593" endtime="20240229 00:52:50.842"/>
+</kw>
+<kw name="Verify Redirect To Expected Url" library="PropertyPagePages">
+<arg>${property_url}</arg>
+<kw name="Location Should Be" library="SeleniumLibrary">
+<arg>${Property_url}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<msg timestamp="20240229 00:52:50.850" level="INFO">Current location is 'https://www.99.co/id/sewa/rumah'.</msg>
+<status status="PASS" starttime="20240229 00:52:50.843" endtime="20240229 00:52:50.850"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:50.842" endtime="20240229 00:52:50.850"/>
+</kw>
+<kw name="Verify User Already On Property Page Details" library="PropertyPageLogic">
+<kw name="Verify Search Bar" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>name=search-bar</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:52:50.852" endtime="20240229 00:52:50.875"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:50.851" endtime="20240229 00:52:50.875"/>
+</kw>
+<kw name="Verify Filter Section" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=filterOuter</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:52:50.876" endtime="20240229 00:52:50.896"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:50.875" endtime="20240229 00:52:50.896"/>
+</kw>
+<kw name="Verify Filter Quick Section" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=FilterQuick</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:52:50.896" endtime="20240229 00:52:50.920"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:50.896" endtime="20240229 00:52:50.920"/>
+</kw>
+<kw name="Verify Filter Sorting Section" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=FilterQuick__sort</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:52:50.920" endtime="20240229 00:52:50.943"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:50.920" endtime="20240229 00:52:50.943"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:50.850" endtime="20240229 00:52:50.944"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>PropertyPagePages.Verify Property Page Title</arg>
+<arg>${property_title}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Verify Property Page Title" library="PropertyPagePages">
+<arg>${property_title}</arg>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<arg>xpath=//div[@class="row"]//h1</arg>
+<arg>${saleProperty_title} di Indonesia</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<msg timestamp="20240229 00:52:50.986" level="FAIL">Element 'xpath=//div[@class="row"]//h1' should have contained text 'Rumah Disewa di Indonesia' but its text was 'Sewa Rumah Kontrakan di Indonesia'.</msg>
+<status status="FAIL" starttime="20240229 00:52:50.945" endtime="20240229 00:52:50.992"/>
+</kw>
+<status status="FAIL" starttime="20240229 00:52:50.944" endtime="20240229 00:52:50.992"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:50.944" endtime="20240229 00:52:50.992"/>
+</kw>
+<kw name="Go Back" library="SeleniumLibrary">
+<doc>Simulates the user clicking the back button on their browser.</doc>
+<status status="PASS" starttime="20240229 00:52:50.992" endtime="20240229 00:52:51.053"/>
+</kw>
+<kw name="Check If Property Content Is Visible" library="HomepageLogic">
+<arg>${i}</arg>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Wait Until Element Is Visible</arg>
+<arg>css=.accordion-content.showContent</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>css=.accordion-content.showContent</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:52:51.055" endtime="20240229 00:52:51.083"/>
+</kw>
+<msg timestamp="20240229 00:52:51.083" level="INFO">${status} = True</msg>
+<status status="PASS" starttime="20240229 00:52:51.054" endtime="20240229 00:52:51.083"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${status}' == 'False'</arg>
+<arg>HomePageLogic.Open All Property Content by Index</arg>
+<arg>${index}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20240229 00:52:51.083" endtime="20240229 00:52:51.084"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:51.054" endtime="20240229 00:52:51.084"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:49.408" endtime="20240229 00:52:51.084"/>
+</iter>
+<iter>
+<var name="${i}">2</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${i}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20240229 00:52:51.085" endtime="20240229 00:52:51.085"/>
+</kw>
+<kw name="Get Property Title" library="HomepagePages">
+<arg>${i}</arg>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${property_title}</var>
+<arg>xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[${index}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20240229 00:52:51.106" level="INFO">${property_title} = Apartemen Disewa</msg>
+<status status="PASS" starttime="20240229 00:52:51.085" endtime="20240229 00:52:51.106"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${property_title}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20240229 00:52:51.107" level="INFO">${property_title} = Apartemen Disewa</msg>
+<status status="PASS" starttime="20240229 00:52:51.106" endtime="20240229 00:52:51.107"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:51.085" endtime="20240229 00:52:51.107"/>
+</kw>
+<kw name="Get Property Content Url By Index" library="HomepagePages">
+<arg>${i}</arg>
+<kw name="Get Element Attribute" library="SeleniumLibrary">
+<var>${property_url}</var>
+<arg>xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[${index}]</arg>
+<arg>href</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<msg timestamp="20240229 00:52:51.127" level="INFO">${property_url} = https://www.99.co/id/sewa/apartemen</msg>
+<status status="PASS" starttime="20240229 00:52:51.108" endtime="20240229 00:52:51.127"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${property_url}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20240229 00:52:51.128" level="INFO">${property_url} = https://www.99.co/id/sewa/apartemen</msg>
+<status status="PASS" starttime="20240229 00:52:51.128" endtime="20240229 00:52:51.128"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:51.107" endtime="20240229 00:52:51.128"/>
+</kw>
+<kw name="Click property By Index" library="HomepagePages">
+<arg>${i}</arg>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[${index}]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240229 00:52:51.129" level="INFO">Clicking element 'xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[2]'.</msg>
+<status status="PASS" starttime="20240229 00:52:51.129" endtime="20240229 00:52:52.338"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:51.128" endtime="20240229 00:52:52.339"/>
+</kw>
+<kw name="Verify Redirect To Expected Url" library="PropertyPagePages">
+<arg>${property_url}</arg>
+<kw name="Location Should Be" library="SeleniumLibrary">
+<arg>${Property_url}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<msg timestamp="20240229 00:52:52.345" level="INFO">Current location is 'https://www.99.co/id/sewa/apartemen'.</msg>
+<status status="PASS" starttime="20240229 00:52:52.340" endtime="20240229 00:52:52.345"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:52.339" endtime="20240229 00:52:52.345"/>
+</kw>
+<kw name="Verify User Already On Property Page Details" library="PropertyPageLogic">
+<kw name="Verify Search Bar" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>name=search-bar</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:52:52.346" endtime="20240229 00:52:52.364"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:52.346" endtime="20240229 00:52:52.364"/>
+</kw>
+<kw name="Verify Filter Section" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=filterOuter</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:52:52.365" endtime="20240229 00:52:52.382"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:52.365" endtime="20240229 00:52:52.382"/>
+</kw>
+<kw name="Verify Filter Quick Section" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=FilterQuick</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:52:52.383" endtime="20240229 00:52:52.408"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:52.382" endtime="20240229 00:52:52.408"/>
+</kw>
+<kw name="Verify Filter Sorting Section" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=FilterQuick__sort</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:52:52.409" endtime="20240229 00:52:52.512"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:52.408" endtime="20240229 00:52:52.513"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:52.345" endtime="20240229 00:52:52.514"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>PropertyPagePages.Verify Property Page Title</arg>
+<arg>${property_title}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Verify Property Page Title" library="PropertyPagePages">
+<arg>${property_title}</arg>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<arg>xpath=//div[@class="row"]//h1</arg>
+<arg>${saleProperty_title} di Indonesia</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<msg timestamp="20240229 00:52:52.749" level="FAIL">Element 'xpath=//div[@class="row"]//h1' should have contained text 'Apartemen Disewa di Indonesia' but its text was 'Sewa Apartemen di Indonesia'.</msg>
+<status status="FAIL" starttime="20240229 00:52:52.514" endtime="20240229 00:52:52.750"/>
+</kw>
+<status status="FAIL" starttime="20240229 00:52:52.514" endtime="20240229 00:52:52.750"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:52.514" endtime="20240229 00:52:52.750"/>
+</kw>
+<kw name="Go Back" library="SeleniumLibrary">
+<doc>Simulates the user clicking the back button on their browser.</doc>
+<status status="PASS" starttime="20240229 00:52:52.751" endtime="20240229 00:52:52.791"/>
+</kw>
+<kw name="Check If Property Content Is Visible" library="HomepageLogic">
+<arg>${i}</arg>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Wait Until Element Is Visible</arg>
+<arg>css=.accordion-content.showContent</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>css=.accordion-content.showContent</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:52:52.792" endtime="20240229 00:52:52.811"/>
+</kw>
+<msg timestamp="20240229 00:52:52.811" level="INFO">${status} = True</msg>
+<status status="PASS" starttime="20240229 00:52:52.792" endtime="20240229 00:52:52.811"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${status}' == 'False'</arg>
+<arg>HomePageLogic.Open All Property Content by Index</arg>
+<arg>${index}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20240229 00:52:52.811" endtime="20240229 00:52:52.812"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:52.791" endtime="20240229 00:52:52.812"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:51.084" endtime="20240229 00:52:52.812"/>
+</iter>
+<iter>
+<var name="${i}">3</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${i}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20240229 00:52:52.812" endtime="20240229 00:52:52.813"/>
+</kw>
+<kw name="Get Property Title" library="HomepagePages">
+<arg>${i}</arg>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${property_title}</var>
+<arg>xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[${index}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20240229 00:52:52.838" level="INFO">${property_title} = Ruko Disewa</msg>
+<status status="PASS" starttime="20240229 00:52:52.814" endtime="20240229 00:52:52.838"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${property_title}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20240229 00:52:52.838" level="INFO">${property_title} = Ruko Disewa</msg>
+<status status="PASS" starttime="20240229 00:52:52.838" endtime="20240229 00:52:52.838"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:52.813" endtime="20240229 00:52:52.838"/>
+</kw>
+<kw name="Get Property Content Url By Index" library="HomepagePages">
+<arg>${i}</arg>
+<kw name="Get Element Attribute" library="SeleniumLibrary">
+<var>${property_url}</var>
+<arg>xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[${index}]</arg>
+<arg>href</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<msg timestamp="20240229 00:52:52.857" level="INFO">${property_url} = https://www.99.co/id/sewa/ruko</msg>
+<status status="PASS" starttime="20240229 00:52:52.839" endtime="20240229 00:52:52.857"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${property_url}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20240229 00:52:52.858" level="INFO">${property_url} = https://www.99.co/id/sewa/ruko</msg>
+<status status="PASS" starttime="20240229 00:52:52.857" endtime="20240229 00:52:52.858"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:52.839" endtime="20240229 00:52:52.858"/>
+</kw>
+<kw name="Click property By Index" library="HomepagePages">
+<arg>${i}</arg>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[${index}]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240229 00:52:52.859" level="INFO">Clicking element 'xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[3]'.</msg>
+<status status="PASS" starttime="20240229 00:52:52.858" endtime="20240229 00:52:53.993"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:52.858" endtime="20240229 00:52:53.993"/>
+</kw>
+<kw name="Verify Redirect To Expected Url" library="PropertyPagePages">
+<arg>${property_url}</arg>
+<kw name="Location Should Be" library="SeleniumLibrary">
+<arg>${Property_url}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<msg timestamp="20240229 00:52:54.109" level="INFO">Current location is 'https://www.99.co/id/sewa/ruko'.</msg>
+<status status="PASS" starttime="20240229 00:52:53.994" endtime="20240229 00:52:54.109"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:53.993" endtime="20240229 00:52:54.109"/>
+</kw>
+<kw name="Verify User Already On Property Page Details" library="PropertyPageLogic">
+<kw name="Verify Search Bar" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>name=search-bar</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:52:54.111" endtime="20240229 00:52:54.261"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:54.110" endtime="20240229 00:52:54.261"/>
+</kw>
+<kw name="Verify Filter Section" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=filterOuter</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:52:54.262" endtime="20240229 00:52:54.281"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:54.261" endtime="20240229 00:52:54.281"/>
+</kw>
+<kw name="Verify Filter Quick Section" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=FilterQuick</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:52:54.282" endtime="20240229 00:52:54.299"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:54.282" endtime="20240229 00:52:54.299"/>
+</kw>
+<kw name="Verify Filter Sorting Section" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=FilterQuick__sort</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:52:54.300" endtime="20240229 00:52:54.318"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:54.300" endtime="20240229 00:52:54.318"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:54.110" endtime="20240229 00:52:54.318"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>PropertyPagePages.Verify Property Page Title</arg>
+<arg>${property_title}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Verify Property Page Title" library="PropertyPagePages">
+<arg>${property_title}</arg>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<arg>xpath=//div[@class="row"]//h1</arg>
+<arg>${saleProperty_title} di Indonesia</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<msg timestamp="20240229 00:52:54.336" level="FAIL">Element 'xpath=//div[@class="row"]//h1' should have contained text 'Ruko Disewa di Indonesia' but its text was 'Sewa Ruko di Indonesia'.</msg>
+<status status="FAIL" starttime="20240229 00:52:54.319" endtime="20240229 00:52:54.337"/>
+</kw>
+<status status="FAIL" starttime="20240229 00:52:54.318" endtime="20240229 00:52:54.337"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:54.318" endtime="20240229 00:52:54.337"/>
+</kw>
+<kw name="Go Back" library="SeleniumLibrary">
+<doc>Simulates the user clicking the back button on their browser.</doc>
+<status status="PASS" starttime="20240229 00:52:54.337" endtime="20240229 00:52:54.375"/>
+</kw>
+<kw name="Check If Property Content Is Visible" library="HomepageLogic">
+<arg>${i}</arg>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Wait Until Element Is Visible</arg>
+<arg>css=.accordion-content.showContent</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>css=.accordion-content.showContent</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:52:54.377" endtime="20240229 00:52:54.400"/>
+</kw>
+<msg timestamp="20240229 00:52:54.400" level="INFO">${status} = True</msg>
+<status status="PASS" starttime="20240229 00:52:54.376" endtime="20240229 00:52:54.400"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${status}' == 'False'</arg>
+<arg>HomePageLogic.Open All Property Content by Index</arg>
+<arg>${index}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20240229 00:52:54.401" endtime="20240229 00:52:54.401"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:54.375" endtime="20240229 00:52:54.401"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:52.812" endtime="20240229 00:52:54.401"/>
+</iter>
+<iter>
+<var name="${i}">4</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${i}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20240229 00:52:54.402" endtime="20240229 00:52:54.402"/>
+</kw>
+<kw name="Get Property Title" library="HomepagePages">
+<arg>${i}</arg>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${property_title}</var>
+<arg>xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[${index}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20240229 00:52:54.427" level="INFO">${property_title} = Tanah Disewa</msg>
+<status status="PASS" starttime="20240229 00:52:54.402" endtime="20240229 00:52:54.427"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${property_title}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20240229 00:52:54.427" level="INFO">${property_title} = Tanah Disewa</msg>
+<status status="PASS" starttime="20240229 00:52:54.427" endtime="20240229 00:52:54.427"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:54.402" endtime="20240229 00:52:54.427"/>
+</kw>
+<kw name="Get Property Content Url By Index" library="HomepagePages">
+<arg>${i}</arg>
+<kw name="Get Element Attribute" library="SeleniumLibrary">
+<var>${property_url}</var>
+<arg>xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[${index}]</arg>
+<arg>href</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<msg timestamp="20240229 00:52:54.445" level="INFO">${property_url} = https://www.99.co/id/sewa/tanah</msg>
+<status status="PASS" starttime="20240229 00:52:54.428" endtime="20240229 00:52:54.445"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${property_url}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20240229 00:52:54.446" level="INFO">${property_url} = https://www.99.co/id/sewa/tanah</msg>
+<status status="PASS" starttime="20240229 00:52:54.445" endtime="20240229 00:52:54.446"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:54.428" endtime="20240229 00:52:54.446"/>
+</kw>
+<kw name="Click property By Index" library="HomepagePages">
+<arg>${i}</arg>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[${index}]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240229 00:52:54.447" level="INFO">Clicking element 'xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[4]'.</msg>
+<status status="PASS" starttime="20240229 00:52:54.446" endtime="20240229 00:52:56.325"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:54.446" endtime="20240229 00:52:56.326"/>
+</kw>
+<kw name="Verify Redirect To Expected Url" library="PropertyPagePages">
+<arg>${property_url}</arg>
+<kw name="Location Should Be" library="SeleniumLibrary">
+<arg>${Property_url}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<msg timestamp="20240229 00:52:56.336" level="INFO">Current location is 'https://www.99.co/id/sewa/tanah'.</msg>
+<status status="PASS" starttime="20240229 00:52:56.328" endtime="20240229 00:52:56.336"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:56.327" endtime="20240229 00:52:56.336"/>
+</kw>
+<kw name="Verify User Already On Property Page Details" library="PropertyPageLogic">
+<kw name="Verify Search Bar" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>name=search-bar</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:52:56.338" endtime="20240229 00:52:56.421"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:56.337" endtime="20240229 00:52:56.421"/>
+</kw>
+<kw name="Verify Filter Section" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=filterOuter</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:52:56.422" endtime="20240229 00:52:56.658"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:56.422" endtime="20240229 00:52:56.658"/>
+</kw>
+<kw name="Verify Filter Quick Section" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=FilterQuick</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:52:56.659" endtime="20240229 00:52:56.677"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:56.659" endtime="20240229 00:52:56.677"/>
+</kw>
+<kw name="Verify Filter Sorting Section" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=FilterQuick__sort</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:52:56.678" endtime="20240229 00:52:56.695"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:56.678" endtime="20240229 00:52:56.695"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:56.337" endtime="20240229 00:52:56.695"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>PropertyPagePages.Verify Property Page Title</arg>
+<arg>${property_title}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Verify Property Page Title" library="PropertyPagePages">
+<arg>${property_title}</arg>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<arg>xpath=//div[@class="row"]//h1</arg>
+<arg>${saleProperty_title} di Indonesia</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<msg timestamp="20240229 00:52:56.713" level="FAIL">Element 'xpath=//div[@class="row"]//h1' should have contained text 'Tanah Disewa di Indonesia' but its text was 'Sewa Tanah di Indonesia'.</msg>
+<status status="FAIL" starttime="20240229 00:52:56.696" endtime="20240229 00:52:56.713"/>
+</kw>
+<status status="FAIL" starttime="20240229 00:52:56.695" endtime="20240229 00:52:56.714"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:56.695" endtime="20240229 00:52:56.714"/>
+</kw>
+<kw name="Go Back" library="SeleniumLibrary">
+<doc>Simulates the user clicking the back button on their browser.</doc>
+<status status="PASS" starttime="20240229 00:52:56.714" endtime="20240229 00:52:56.752"/>
+</kw>
+<kw name="Check If Property Content Is Visible" library="HomepageLogic">
+<arg>${i}</arg>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Wait Until Element Is Visible</arg>
+<arg>css=.accordion-content.showContent</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>css=.accordion-content.showContent</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:52:56.753" endtime="20240229 00:52:56.776"/>
+</kw>
+<msg timestamp="20240229 00:52:56.776" level="INFO">${status} = True</msg>
+<status status="PASS" starttime="20240229 00:52:56.753" endtime="20240229 00:52:56.776"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${status}' == 'False'</arg>
+<arg>HomePageLogic.Open All Property Content by Index</arg>
+<arg>${index}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20240229 00:52:56.776" endtime="20240229 00:52:56.777"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:56.752" endtime="20240229 00:52:56.777"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:54.401" endtime="20240229 00:52:56.777"/>
+</iter>
+<iter>
+<var name="${i}">5</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${i}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20240229 00:52:56.777" endtime="20240229 00:52:56.778"/>
+</kw>
+<kw name="Get Property Title" library="HomepagePages">
+<arg>${i}</arg>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${property_title}</var>
+<arg>xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[${index}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20240229 00:52:56.808" level="INFO">${property_title} = Kost Disewa</msg>
+<status status="PASS" starttime="20240229 00:52:56.778" endtime="20240229 00:52:56.808"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${property_title}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20240229 00:52:56.809" level="INFO">${property_title} = Kost Disewa</msg>
+<status status="PASS" starttime="20240229 00:52:56.808" endtime="20240229 00:52:56.809"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:56.778" endtime="20240229 00:52:56.809"/>
+</kw>
+<kw name="Get Property Content Url By Index" library="HomepagePages">
+<arg>${i}</arg>
+<kw name="Get Element Attribute" library="SeleniumLibrary">
+<var>${property_url}</var>
+<arg>xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[${index}]</arg>
+<arg>href</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<msg timestamp="20240229 00:52:56.828" level="INFO">${property_url} = https://www.99.co/id/sewa/kost</msg>
+<status status="PASS" starttime="20240229 00:52:56.810" endtime="20240229 00:52:56.828"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${property_url}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20240229 00:52:56.828" level="INFO">${property_url} = https://www.99.co/id/sewa/kost</msg>
+<status status="PASS" starttime="20240229 00:52:56.828" endtime="20240229 00:52:56.828"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:56.809" endtime="20240229 00:52:56.828"/>
+</kw>
+<kw name="Click property By Index" library="HomepagePages">
+<arg>${i}</arg>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[${index}]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240229 00:52:56.829" level="INFO">Clicking element 'xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[5]'.</msg>
+<status status="PASS" starttime="20240229 00:52:56.829" endtime="20240229 00:52:57.660"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:56.828" endtime="20240229 00:52:57.660"/>
+</kw>
+<kw name="Verify Redirect To Expected Url" library="PropertyPagePages">
+<arg>${property_url}</arg>
+<kw name="Location Should Be" library="SeleniumLibrary">
+<arg>${Property_url}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<msg timestamp="20240229 00:52:57.905" level="INFO">Current location is 'https://www.99.co/id/sewa/kost'.</msg>
+<status status="PASS" starttime="20240229 00:52:57.661" endtime="20240229 00:52:57.905"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:57.660" endtime="20240229 00:52:57.905"/>
+</kw>
+<kw name="Verify User Already On Property Page Details" library="PropertyPageLogic">
+<kw name="Verify Search Bar" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>name=search-bar</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:52:57.912" endtime="20240229 00:52:57.969"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:57.906" endtime="20240229 00:52:57.969"/>
+</kw>
+<kw name="Verify Filter Section" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=filterOuter</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:52:57.970" endtime="20240229 00:52:57.988"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:57.970" endtime="20240229 00:52:57.988"/>
+</kw>
+<kw name="Verify Filter Quick Section" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=FilterQuick</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:52:57.989" endtime="20240229 00:52:58.006"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:57.989" endtime="20240229 00:52:58.007"/>
+</kw>
+<kw name="Verify Filter Sorting Section" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=FilterQuick__sort</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:52:58.007" endtime="20240229 00:52:58.065"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:58.007" endtime="20240229 00:52:58.066"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:57.905" endtime="20240229 00:52:58.066"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>PropertyPagePages.Verify Property Page Title</arg>
+<arg>${property_title}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Verify Property Page Title" library="PropertyPagePages">
+<arg>${property_title}</arg>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<arg>xpath=//div[@class="row"]//h1</arg>
+<arg>${saleProperty_title} di Indonesia</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<msg timestamp="20240229 00:52:58.115" level="FAIL">Element 'xpath=//div[@class="row"]//h1' should have contained text 'Kost Disewa di Indonesia' but its text was 'Sewa Kost'.</msg>
+<status status="FAIL" starttime="20240229 00:52:58.067" endtime="20240229 00:52:58.116"/>
+</kw>
+<status status="FAIL" starttime="20240229 00:52:58.067" endtime="20240229 00:52:58.116"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:58.066" endtime="20240229 00:52:58.116"/>
+</kw>
+<kw name="Go Back" library="SeleniumLibrary">
+<doc>Simulates the user clicking the back button on their browser.</doc>
+<status status="PASS" starttime="20240229 00:52:58.116" endtime="20240229 00:52:58.169"/>
+</kw>
+<kw name="Check If Property Content Is Visible" library="HomepageLogic">
+<arg>${i}</arg>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Wait Until Element Is Visible</arg>
+<arg>css=.accordion-content.showContent</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>css=.accordion-content.showContent</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:52:58.170" endtime="20240229 00:52:58.192"/>
+</kw>
+<msg timestamp="20240229 00:52:58.192" level="INFO">${status} = True</msg>
+<status status="PASS" starttime="20240229 00:52:58.170" endtime="20240229 00:52:58.192"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${status}' == 'False'</arg>
+<arg>HomePageLogic.Open All Property Content by Index</arg>
+<arg>${index}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20240229 00:52:58.192" endtime="20240229 00:52:58.192"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:58.169" endtime="20240229 00:52:58.193"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:56.777" endtime="20240229 00:52:58.193"/>
+</iter>
+<iter>
+<var name="${i}">6</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${i}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20240229 00:52:58.193" endtime="20240229 00:52:58.193"/>
+</kw>
+<kw name="Get Property Title" library="HomepagePages">
+<arg>${i}</arg>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${property_title}</var>
+<arg>xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[${index}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20240229 00:52:58.221" level="INFO">${property_title} = Villa Disewa</msg>
+<status status="PASS" starttime="20240229 00:52:58.194" endtime="20240229 00:52:58.221"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${property_title}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20240229 00:52:58.222" level="INFO">${property_title} = Villa Disewa</msg>
+<status status="PASS" starttime="20240229 00:52:58.222" endtime="20240229 00:52:58.222"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:58.194" endtime="20240229 00:52:58.222"/>
+</kw>
+<kw name="Get Property Content Url By Index" library="HomepagePages">
+<arg>${i}</arg>
+<kw name="Get Element Attribute" library="SeleniumLibrary">
+<var>${property_url}</var>
+<arg>xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[${index}]</arg>
+<arg>href</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<msg timestamp="20240229 00:52:58.243" level="INFO">${property_url} = https://www.99.co/id/sewa/vila</msg>
+<status status="PASS" starttime="20240229 00:52:58.223" endtime="20240229 00:52:58.243"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${property_url}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20240229 00:52:58.244" level="INFO">${property_url} = https://www.99.co/id/sewa/vila</msg>
+<status status="PASS" starttime="20240229 00:52:58.243" endtime="20240229 00:52:58.244"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:58.223" endtime="20240229 00:52:58.244"/>
+</kw>
+<kw name="Click property By Index" library="HomepagePages">
+<arg>${i}</arg>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[${index}]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240229 00:52:58.245" level="INFO">Clicking element 'xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[6]'.</msg>
+<status status="PASS" starttime="20240229 00:52:58.245" endtime="20240229 00:52:59.373"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:58.244" endtime="20240229 00:52:59.374"/>
+</kw>
+<kw name="Verify Redirect To Expected Url" library="PropertyPagePages">
+<arg>${property_url}</arg>
+<kw name="Location Should Be" library="SeleniumLibrary">
+<arg>${Property_url}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<msg timestamp="20240229 00:52:59.584" level="INFO">Current location is 'https://www.99.co/id/sewa/vila'.</msg>
+<status status="PASS" starttime="20240229 00:52:59.374" endtime="20240229 00:52:59.584"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:59.374" endtime="20240229 00:52:59.584"/>
+</kw>
+<kw name="Verify User Already On Property Page Details" library="PropertyPageLogic">
+<kw name="Verify Search Bar" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>name=search-bar</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:52:59.585" endtime="20240229 00:52:59.623"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:59.585" endtime="20240229 00:52:59.623"/>
+</kw>
+<kw name="Verify Filter Section" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=filterOuter</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:52:59.624" endtime="20240229 00:52:59.645"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:59.624" endtime="20240229 00:52:59.645"/>
+</kw>
+<kw name="Verify Filter Quick Section" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=FilterQuick</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:52:59.646" endtime="20240229 00:52:59.665"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:59.645" endtime="20240229 00:52:59.665"/>
+</kw>
+<kw name="Verify Filter Sorting Section" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=FilterQuick__sort</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:52:59.666" endtime="20240229 00:52:59.685"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:59.665" endtime="20240229 00:52:59.685"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:59.585" endtime="20240229 00:52:59.685"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>PropertyPagePages.Verify Property Page Title</arg>
+<arg>${property_title}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Verify Property Page Title" library="PropertyPagePages">
+<arg>${property_title}</arg>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<arg>xpath=//div[@class="row"]//h1</arg>
+<arg>${saleProperty_title} di Indonesia</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<msg timestamp="20240229 00:52:59.777" level="FAIL">Element 'xpath=//div[@class="row"]//h1' should have contained text 'Villa Disewa di Indonesia' but its text was 'Sewa Villa di Indonesia'.</msg>
+<status status="FAIL" starttime="20240229 00:52:59.686" endtime="20240229 00:52:59.777"/>
+</kw>
+<status status="FAIL" starttime="20240229 00:52:59.686" endtime="20240229 00:52:59.778"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:59.685" endtime="20240229 00:52:59.778"/>
+</kw>
+<kw name="Go Back" library="SeleniumLibrary">
+<doc>Simulates the user clicking the back button on their browser.</doc>
+<status status="PASS" starttime="20240229 00:52:59.778" endtime="20240229 00:52:59.834"/>
+</kw>
+<kw name="Check If Property Content Is Visible" library="HomepageLogic">
+<arg>${i}</arg>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Wait Until Element Is Visible</arg>
+<arg>css=.accordion-content.showContent</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>css=.accordion-content.showContent</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:52:59.836" endtime="20240229 00:52:59.859"/>
+</kw>
+<msg timestamp="20240229 00:52:59.859" level="INFO">${status} = True</msg>
+<status status="PASS" starttime="20240229 00:52:59.835" endtime="20240229 00:52:59.859"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${status}' == 'False'</arg>
+<arg>HomePageLogic.Open All Property Content by Index</arg>
+<arg>${index}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20240229 00:52:59.859" endtime="20240229 00:52:59.860"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:59.834" endtime="20240229 00:52:59.860"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:58.193" endtime="20240229 00:52:59.860"/>
+</iter>
+<iter>
+<var name="${i}">7</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${i}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20240229 00:52:59.860" endtime="20240229 00:52:59.861"/>
+</kw>
+<kw name="Get Property Title" library="HomepagePages">
+<arg>${i}</arg>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${property_title}</var>
+<arg>xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[${index}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20240229 00:52:59.891" level="INFO">${property_title} = Komersial Disewa</msg>
+<status status="PASS" starttime="20240229 00:52:59.861" endtime="20240229 00:52:59.891"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${property_title}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20240229 00:52:59.892" level="INFO">${property_title} = Komersial Disewa</msg>
+<status status="PASS" starttime="20240229 00:52:59.891" endtime="20240229 00:52:59.892"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:59.861" endtime="20240229 00:52:59.892"/>
+</kw>
+<kw name="Get Property Content Url By Index" library="HomepagePages">
+<arg>${i}</arg>
+<kw name="Get Element Attribute" library="SeleniumLibrary">
+<var>${property_url}</var>
+<arg>xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[${index}]</arg>
+<arg>href</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<msg timestamp="20240229 00:52:59.920" level="INFO">${property_url} = https://www.99.co/id/sewa/komersial</msg>
+<status status="PASS" starttime="20240229 00:52:59.893" endtime="20240229 00:52:59.920"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${property_url}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20240229 00:52:59.920" level="INFO">${property_url} = https://www.99.co/id/sewa/komersial</msg>
+<status status="PASS" starttime="20240229 00:52:59.920" endtime="20240229 00:52:59.920"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:59.892" endtime="20240229 00:52:59.921"/>
+</kw>
+<kw name="Click property By Index" library="HomepagePages">
+<arg>${i}</arg>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[${index}]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240229 00:52:59.922" level="INFO">Clicking element 'xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[7]'.</msg>
+<status status="PASS" starttime="20240229 00:52:59.921" endtime="20240229 00:53:01.013"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:59.921" endtime="20240229 00:53:01.013"/>
+</kw>
+<kw name="Verify Redirect To Expected Url" library="PropertyPagePages">
+<arg>${property_url}</arg>
+<kw name="Location Should Be" library="SeleniumLibrary">
+<arg>${Property_url}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<msg timestamp="20240229 00:53:01.289" level="INFO">Current location is 'https://www.99.co/id/sewa/komersial'.</msg>
+<status status="PASS" starttime="20240229 00:53:01.014" endtime="20240229 00:53:01.289"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:01.013" endtime="20240229 00:53:01.290"/>
+</kw>
+<kw name="Verify User Already On Property Page Details" library="PropertyPageLogic">
+<kw name="Verify Search Bar" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>name=search-bar</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:53:01.291" endtime="20240229 00:53:01.357"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:01.290" endtime="20240229 00:53:01.357"/>
+</kw>
+<kw name="Verify Filter Section" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=filterOuter</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:53:01.358" endtime="20240229 00:53:01.378"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:01.357" endtime="20240229 00:53:01.379"/>
+</kw>
+<kw name="Verify Filter Quick Section" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=FilterQuick</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:53:01.379" endtime="20240229 00:53:01.478"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:01.379" endtime="20240229 00:53:01.478"/>
+</kw>
+<kw name="Verify Filter Sorting Section" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=FilterQuick__sort</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:53:01.478" endtime="20240229 00:53:01.509"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:01.478" endtime="20240229 00:53:01.509"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:01.290" endtime="20240229 00:53:01.510"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>PropertyPagePages.Verify Property Page Title</arg>
+<arg>${property_title}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Verify Property Page Title" library="PropertyPagePages">
+<arg>${property_title}</arg>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<arg>xpath=//div[@class="row"]//h1</arg>
+<arg>${saleProperty_title} di Indonesia</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<msg timestamp="20240229 00:53:01.533" level="FAIL">Element 'xpath=//div[@class="row"]//h1' should have contained text 'Komersial Disewa di Indonesia' but its text was 'Sewa Komersial'.</msg>
+<status status="FAIL" starttime="20240229 00:53:01.511" endtime="20240229 00:53:01.534"/>
+</kw>
+<status status="FAIL" starttime="20240229 00:53:01.510" endtime="20240229 00:53:01.534"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:01.510" endtime="20240229 00:53:01.534"/>
+</kw>
+<kw name="Go Back" library="SeleniumLibrary">
+<doc>Simulates the user clicking the back button on their browser.</doc>
+<status status="PASS" starttime="20240229 00:53:01.534" endtime="20240229 00:53:01.588"/>
+</kw>
+<kw name="Check If Property Content Is Visible" library="HomepageLogic">
+<arg>${i}</arg>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Wait Until Element Is Visible</arg>
+<arg>css=.accordion-content.showContent</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>css=.accordion-content.showContent</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:53:01.589" endtime="20240229 00:53:01.621"/>
+</kw>
+<msg timestamp="20240229 00:53:01.621" level="INFO">${status} = True</msg>
+<status status="PASS" starttime="20240229 00:53:01.589" endtime="20240229 00:53:01.621"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${status}' == 'False'</arg>
+<arg>HomePageLogic.Open All Property Content by Index</arg>
+<arg>${index}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20240229 00:53:01.622" endtime="20240229 00:53:01.622"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:01.588" endtime="20240229 00:53:01.622"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:59.860" endtime="20240229 00:53:01.622"/>
+</iter>
+<iter>
+<var name="${i}">8</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${i}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20240229 00:53:01.623" endtime="20240229 00:53:01.623"/>
+</kw>
+<kw name="Get Property Title" library="HomepagePages">
+<arg>${i}</arg>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${property_title}</var>
+<arg>xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[${index}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20240229 00:53:01.660" level="INFO">${property_title} = Ruang Kantor Disewa</msg>
+<status status="PASS" starttime="20240229 00:53:01.624" endtime="20240229 00:53:01.660"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${property_title}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20240229 00:53:01.661" level="INFO">${property_title} = Ruang Kantor Disewa</msg>
+<status status="PASS" starttime="20240229 00:53:01.660" endtime="20240229 00:53:01.661"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:01.624" endtime="20240229 00:53:01.662"/>
+</kw>
+<kw name="Get Property Content Url By Index" library="HomepagePages">
+<arg>${i}</arg>
+<kw name="Get Element Attribute" library="SeleniumLibrary">
+<var>${property_url}</var>
+<arg>xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[${index}]</arg>
+<arg>href</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<msg timestamp="20240229 00:53:01.693" level="INFO">${property_url} = https://www.99.co/id/sewa/ruang-kantor</msg>
+<status status="PASS" starttime="20240229 00:53:01.662" endtime="20240229 00:53:01.693"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${property_url}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20240229 00:53:01.693" level="INFO">${property_url} = https://www.99.co/id/sewa/ruang-kantor</msg>
+<status status="PASS" starttime="20240229 00:53:01.693" endtime="20240229 00:53:01.693"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:01.662" endtime="20240229 00:53:01.694"/>
+</kw>
+<kw name="Click property By Index" library="HomepagePages">
+<arg>${i}</arg>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[${index}]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240229 00:53:01.695" level="INFO">Clicking element 'xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[8]'.</msg>
+<status status="PASS" starttime="20240229 00:53:01.695" endtime="20240229 00:53:02.729"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:01.694" endtime="20240229 00:53:02.730"/>
+</kw>
+<kw name="Verify Redirect To Expected Url" library="PropertyPagePages">
+<arg>${property_url}</arg>
+<kw name="Location Should Be" library="SeleniumLibrary">
+<arg>${Property_url}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<msg timestamp="20240229 00:53:02.743" level="INFO">Current location is 'https://www.99.co/id/sewa/ruang-kantor'.</msg>
+<status status="PASS" starttime="20240229 00:53:02.731" endtime="20240229 00:53:02.743"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:02.730" endtime="20240229 00:53:02.743"/>
+</kw>
+<kw name="Verify User Already On Property Page Details" library="PropertyPageLogic">
+<kw name="Verify Search Bar" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>name=search-bar</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:53:02.745" endtime="20240229 00:53:02.962"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:02.744" endtime="20240229 00:53:02.963"/>
+</kw>
+<kw name="Verify Filter Section" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=filterOuter</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:53:02.964" endtime="20240229 00:53:03.135"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:02.963" endtime="20240229 00:53:03.136"/>
+</kw>
+<kw name="Verify Filter Quick Section" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=FilterQuick</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:53:03.136" endtime="20240229 00:53:03.218"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:03.136" endtime="20240229 00:53:03.218"/>
+</kw>
+<kw name="Verify Filter Sorting Section" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=FilterQuick__sort</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:53:03.219" endtime="20240229 00:53:03.266"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:03.218" endtime="20240229 00:53:03.266"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:02.743" endtime="20240229 00:53:03.267"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>PropertyPagePages.Verify Property Page Title</arg>
+<arg>${property_title}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Verify Property Page Title" library="PropertyPagePages">
+<arg>${property_title}</arg>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<arg>xpath=//div[@class="row"]//h1</arg>
+<arg>${saleProperty_title} di Indonesia</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<msg timestamp="20240229 00:53:03.295" level="FAIL">Element 'xpath=//div[@class="row"]//h1' should have contained text 'Ruang Kantor Disewa di Indonesia' but its text was 'Sewa Ruang Kantor di Indonesia'.</msg>
+<status status="FAIL" starttime="20240229 00:53:03.268" endtime="20240229 00:53:03.295"/>
+</kw>
+<status status="FAIL" starttime="20240229 00:53:03.267" endtime="20240229 00:53:03.296"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:03.267" endtime="20240229 00:53:03.296"/>
+</kw>
+<kw name="Go Back" library="SeleniumLibrary">
+<doc>Simulates the user clicking the back button on their browser.</doc>
+<status status="PASS" starttime="20240229 00:53:03.296" endtime="20240229 00:53:03.357"/>
+</kw>
+<kw name="Check If Property Content Is Visible" library="HomepageLogic">
+<arg>${i}</arg>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Wait Until Element Is Visible</arg>
+<arg>css=.accordion-content.showContent</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>css=.accordion-content.showContent</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:53:03.358" endtime="20240229 00:53:03.385"/>
+</kw>
+<msg timestamp="20240229 00:53:03.385" level="INFO">${status} = True</msg>
+<status status="PASS" starttime="20240229 00:53:03.358" endtime="20240229 00:53:03.385"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${status}' == 'False'</arg>
+<arg>HomePageLogic.Open All Property Content by Index</arg>
+<arg>${index}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20240229 00:53:03.385" endtime="20240229 00:53:03.386"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:03.357" endtime="20240229 00:53:03.386"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:01.623" endtime="20240229 00:53:03.386"/>
+</iter>
+<iter>
+<var name="${i}">9</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${i}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20240229 00:53:03.386" endtime="20240229 00:53:03.387"/>
+</kw>
+<kw name="Get Property Title" library="HomepagePages">
+<arg>${i}</arg>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${property_title}</var>
+<arg>xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[${index}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20240229 00:53:03.421" level="INFO">${property_title} = Gudang Disewa</msg>
+<status status="PASS" starttime="20240229 00:53:03.387" endtime="20240229 00:53:03.421"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${property_title}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20240229 00:53:03.422" level="INFO">${property_title} = Gudang Disewa</msg>
+<status status="PASS" starttime="20240229 00:53:03.422" endtime="20240229 00:53:03.422"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:03.387" endtime="20240229 00:53:03.423"/>
+</kw>
+<kw name="Get Property Content Url By Index" library="HomepagePages">
+<arg>${i}</arg>
+<kw name="Get Element Attribute" library="SeleniumLibrary">
+<var>${property_url}</var>
+<arg>xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[${index}]</arg>
+<arg>href</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<msg timestamp="20240229 00:53:03.448" level="INFO">${property_url} = https://www.99.co/id/sewa/gudang</msg>
+<status status="PASS" starttime="20240229 00:53:03.423" endtime="20240229 00:53:03.448"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${property_url}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20240229 00:53:03.449" level="INFO">${property_url} = https://www.99.co/id/sewa/gudang</msg>
+<status status="PASS" starttime="20240229 00:53:03.449" endtime="20240229 00:53:03.449"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:03.423" endtime="20240229 00:53:03.450"/>
+</kw>
+<kw name="Click property By Index" library="HomepagePages">
+<arg>${i}</arg>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[${index}]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240229 00:53:03.451" level="INFO">Clicking element 'xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[9]'.</msg>
+<status status="PASS" starttime="20240229 00:53:03.450" endtime="20240229 00:53:04.661"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:03.450" endtime="20240229 00:53:04.661"/>
+</kw>
+<kw name="Verify Redirect To Expected Url" library="PropertyPagePages">
+<arg>${property_url}</arg>
+<kw name="Location Should Be" library="SeleniumLibrary">
+<arg>${Property_url}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<msg timestamp="20240229 00:53:04.983" level="INFO">Current location is 'https://www.99.co/id/sewa/gudang'.</msg>
+<status status="PASS" starttime="20240229 00:53:04.662" endtime="20240229 00:53:04.983"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:04.661" endtime="20240229 00:53:04.984"/>
+</kw>
+<kw name="Verify User Already On Property Page Details" library="PropertyPageLogic">
+<kw name="Verify Search Bar" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>name=search-bar</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:53:04.985" endtime="20240229 00:53:05.072"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:04.984" endtime="20240229 00:53:05.072"/>
+</kw>
+<kw name="Verify Filter Section" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=filterOuter</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:53:05.073" endtime="20240229 00:53:05.097"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:05.072" endtime="20240229 00:53:05.097"/>
+</kw>
+<kw name="Verify Filter Quick Section" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=FilterQuick</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:53:05.098" endtime="20240229 00:53:05.122"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:05.097" endtime="20240229 00:53:05.122"/>
+</kw>
+<kw name="Verify Filter Sorting Section" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=FilterQuick__sort</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:53:05.123" endtime="20240229 00:53:05.149"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:05.122" endtime="20240229 00:53:05.149"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:04.984" endtime="20240229 00:53:05.149"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>PropertyPagePages.Verify Property Page Title</arg>
+<arg>${property_title}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Verify Property Page Title" library="PropertyPagePages">
+<arg>${property_title}</arg>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<arg>xpath=//div[@class="row"]//h1</arg>
+<arg>${saleProperty_title} di Indonesia</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<msg timestamp="20240229 00:53:05.176" level="FAIL">Element 'xpath=//div[@class="row"]//h1' should have contained text 'Gudang Disewa di Indonesia' but its text was 'Sewa Gudang di Indonesia'.</msg>
+<status status="FAIL" starttime="20240229 00:53:05.150" endtime="20240229 00:53:05.177"/>
+</kw>
+<status status="FAIL" starttime="20240229 00:53:05.150" endtime="20240229 00:53:05.177"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:05.149" endtime="20240229 00:53:05.177"/>
+</kw>
+<kw name="Go Back" library="SeleniumLibrary">
+<doc>Simulates the user clicking the back button on their browser.</doc>
+<status status="PASS" starttime="20240229 00:53:05.177" endtime="20240229 00:53:05.314"/>
+</kw>
+<kw name="Check If Property Content Is Visible" library="HomepageLogic">
+<arg>${i}</arg>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Wait Until Element Is Visible</arg>
+<arg>css=.accordion-content.showContent</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>css=.accordion-content.showContent</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:53:05.316" endtime="20240229 00:53:05.360"/>
+</kw>
+<msg timestamp="20240229 00:53:05.360" level="INFO">${status} = True</msg>
+<status status="PASS" starttime="20240229 00:53:05.315" endtime="20240229 00:53:05.360"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${status}' == 'False'</arg>
+<arg>HomePageLogic.Open All Property Content by Index</arg>
+<arg>${index}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20240229 00:53:05.361" endtime="20240229 00:53:05.361"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:05.314" endtime="20240229 00:53:05.361"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:03.386" endtime="20240229 00:53:05.362"/>
+</iter>
+<iter>
+<var name="${i}">10</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${i}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20240229 00:53:05.362" endtime="20240229 00:53:05.362"/>
+</kw>
+<kw name="Get Property Title" library="HomepagePages">
+<arg>${i}</arg>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${property_title}</var>
+<arg>xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[${index}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20240229 00:53:05.504" level="INFO">${property_title} = Hotel Disewa</msg>
+<status status="PASS" starttime="20240229 00:53:05.363" endtime="20240229 00:53:05.504"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${property_title}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20240229 00:53:05.505" level="INFO">${property_title} = Hotel Disewa</msg>
+<status status="PASS" starttime="20240229 00:53:05.504" endtime="20240229 00:53:05.505"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:05.363" endtime="20240229 00:53:05.505"/>
+</kw>
+<kw name="Get Property Content Url By Index" library="HomepagePages">
+<arg>${i}</arg>
+<kw name="Get Element Attribute" library="SeleniumLibrary">
+<var>${property_url}</var>
+<arg>xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[${index}]</arg>
+<arg>href</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<msg timestamp="20240229 00:53:05.548" level="INFO">${property_url} = https://www.99.co/id/sewa/hotel</msg>
+<status status="PASS" starttime="20240229 00:53:05.506" endtime="20240229 00:53:05.548"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${property_url}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20240229 00:53:05.549" level="INFO">${property_url} = https://www.99.co/id/sewa/hotel</msg>
+<status status="PASS" starttime="20240229 00:53:05.549" endtime="20240229 00:53:05.549"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:05.505" endtime="20240229 00:53:05.550"/>
+</kw>
+<kw name="Click property By Index" library="HomepagePages">
+<arg>${i}</arg>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[${index}]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240229 00:53:05.551" level="INFO">Clicking element 'xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[10]'.</msg>
+<status status="PASS" starttime="20240229 00:53:05.550" endtime="20240229 00:53:06.634"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:05.550" endtime="20240229 00:53:06.634"/>
+</kw>
+<kw name="Verify Redirect To Expected Url" library="PropertyPagePages">
+<arg>${property_url}</arg>
+<kw name="Location Should Be" library="SeleniumLibrary">
+<arg>${Property_url}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<msg timestamp="20240229 00:53:06.649" level="INFO">Current location is 'https://www.99.co/id/sewa/hotel'.</msg>
+<status status="PASS" starttime="20240229 00:53:06.636" endtime="20240229 00:53:06.649"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:06.635" endtime="20240229 00:53:06.649"/>
+</kw>
+<kw name="Verify User Already On Property Page Details" library="PropertyPageLogic">
+<kw name="Verify Search Bar" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>name=search-bar</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:53:06.651" endtime="20240229 00:53:06.883"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:06.650" endtime="20240229 00:53:06.883"/>
+</kw>
+<kw name="Verify Filter Section" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=filterOuter</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:53:06.889" endtime="20240229 00:53:07.077"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:06.884" endtime="20240229 00:53:07.077"/>
+</kw>
+<kw name="Verify Filter Quick Section" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=FilterQuick</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:53:07.078" endtime="20240229 00:53:07.179"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:07.078" endtime="20240229 00:53:07.180"/>
+</kw>
+<kw name="Verify Filter Sorting Section" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=FilterQuick__sort</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:53:07.181" endtime="20240229 00:53:07.216"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:07.180" endtime="20240229 00:53:07.216"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:06.650" endtime="20240229 00:53:07.216"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>PropertyPagePages.Verify Property Page Title</arg>
+<arg>${property_title}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Verify Property Page Title" library="PropertyPagePages">
+<arg>${property_title}</arg>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<arg>xpath=//div[@class="row"]//h1</arg>
+<arg>${saleProperty_title} di Indonesia</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<msg timestamp="20240229 00:53:07.245" level="FAIL">Element 'xpath=//div[@class="row"]//h1' should have contained text 'Hotel Disewa di Indonesia' but its text was 'Sewa Hotel di Indonesia'.</msg>
+<status status="FAIL" starttime="20240229 00:53:07.218" endtime="20240229 00:53:07.246"/>
+</kw>
+<status status="FAIL" starttime="20240229 00:53:07.217" endtime="20240229 00:53:07.246"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:07.217" endtime="20240229 00:53:07.246"/>
+</kw>
+<kw name="Go Back" library="SeleniumLibrary">
+<doc>Simulates the user clicking the back button on their browser.</doc>
+<status status="PASS" starttime="20240229 00:53:07.247" endtime="20240229 00:53:07.415"/>
+</kw>
+<kw name="Check If Property Content Is Visible" library="HomepageLogic">
+<arg>${i}</arg>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Wait Until Element Is Visible</arg>
+<arg>css=.accordion-content.showContent</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>css=.accordion-content.showContent</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:53:07.418" endtime="20240229 00:53:07.505"/>
+</kw>
+<msg timestamp="20240229 00:53:07.506" level="INFO">${status} = True</msg>
+<status status="PASS" starttime="20240229 00:53:07.418" endtime="20240229 00:53:07.506"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${status}' == 'False'</arg>
+<arg>HomePageLogic.Open All Property Content by Index</arg>
+<arg>${index}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20240229 00:53:07.506" endtime="20240229 00:53:07.507"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:07.416" endtime="20240229 00:53:07.507"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:05.362" endtime="20240229 00:53:07.507"/>
+</iter>
+<iter>
+<var name="${i}">11</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${i}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20240229 00:53:07.508" endtime="20240229 00:53:07.509"/>
+</kw>
+<kw name="Get Property Title" library="HomepagePages">
+<arg>${i}</arg>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${property_title}</var>
+<arg>xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[${index}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20240229 00:53:07.549" level="INFO">${property_title} = Kios Disewa</msg>
+<status status="PASS" starttime="20240229 00:53:07.510" endtime="20240229 00:53:07.549"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${property_title}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20240229 00:53:07.550" level="INFO">${property_title} = Kios Disewa</msg>
+<status status="PASS" starttime="20240229 00:53:07.549" endtime="20240229 00:53:07.550"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:07.509" endtime="20240229 00:53:07.550"/>
+</kw>
+<kw name="Get Property Content Url By Index" library="HomepagePages">
+<arg>${i}</arg>
+<kw name="Get Element Attribute" library="SeleniumLibrary">
+<var>${property_url}</var>
+<arg>xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[${index}]</arg>
+<arg>href</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<msg timestamp="20240229 00:53:07.579" level="INFO">${property_url} = https://www.99.co/id/sewa/kios</msg>
+<status status="PASS" starttime="20240229 00:53:07.551" endtime="20240229 00:53:07.579"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${property_url}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20240229 00:53:07.580" level="INFO">${property_url} = https://www.99.co/id/sewa/kios</msg>
+<status status="PASS" starttime="20240229 00:53:07.580" endtime="20240229 00:53:07.580"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:07.550" endtime="20240229 00:53:07.580"/>
+</kw>
+<kw name="Click property By Index" library="HomepagePages">
+<arg>${i}</arg>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[${index}]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240229 00:53:07.582" level="INFO">Clicking element 'xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[11]'.</msg>
+<status status="PASS" starttime="20240229 00:53:07.581" endtime="20240229 00:53:08.559"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:07.581" endtime="20240229 00:53:08.559"/>
+</kw>
+<kw name="Verify Redirect To Expected Url" library="PropertyPagePages">
+<arg>${property_url}</arg>
+<kw name="Location Should Be" library="SeleniumLibrary">
+<arg>${Property_url}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<msg timestamp="20240229 00:53:08.579" level="INFO">Current location is 'https://www.99.co/id/sewa/kios'.</msg>
+<status status="PASS" starttime="20240229 00:53:08.561" endtime="20240229 00:53:08.580"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:08.560" endtime="20240229 00:53:08.580"/>
+</kw>
+<kw name="Verify User Already On Property Page Details" library="PropertyPageLogic">
+<kw name="Verify Search Bar" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>name=search-bar</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:53:08.583" endtime="20240229 00:53:08.793"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:08.582" endtime="20240229 00:53:08.793"/>
+</kw>
+<kw name="Verify Filter Section" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=filterOuter</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:53:08.794" endtime="20240229 00:53:09.208"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:08.793" endtime="20240229 00:53:09.208"/>
+</kw>
+<kw name="Verify Filter Quick Section" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=FilterQuick</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:53:09.209" endtime="20240229 00:53:09.275"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:09.208" endtime="20240229 00:53:09.275"/>
+</kw>
+<kw name="Verify Filter Sorting Section" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=FilterQuick__sort</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:53:09.276" endtime="20240229 00:53:09.306"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:09.276" endtime="20240229 00:53:09.306"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:08.580" endtime="20240229 00:53:09.307"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>PropertyPagePages.Verify Property Page Title</arg>
+<arg>${property_title}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Verify Property Page Title" library="PropertyPagePages">
+<arg>${property_title}</arg>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<arg>xpath=//div[@class="row"]//h1</arg>
+<arg>${saleProperty_title} di Indonesia</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<msg timestamp="20240229 00:53:09.338" level="FAIL">Element 'xpath=//div[@class="row"]//h1' should have contained text 'Kios Disewa di Indonesia' but its text was 'Sewa Kios di Indonesia'.</msg>
+<status status="FAIL" starttime="20240229 00:53:09.308" endtime="20240229 00:53:09.338"/>
+</kw>
+<status status="FAIL" starttime="20240229 00:53:09.307" endtime="20240229 00:53:09.339"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:09.307" endtime="20240229 00:53:09.339"/>
+</kw>
+<kw name="Go Back" library="SeleniumLibrary">
+<doc>Simulates the user clicking the back button on their browser.</doc>
+<status status="PASS" starttime="20240229 00:53:09.339" endtime="20240229 00:53:09.412"/>
+</kw>
+<kw name="Check If Property Content Is Visible" library="HomepageLogic">
+<arg>${i}</arg>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Wait Until Element Is Visible</arg>
+<arg>css=.accordion-content.showContent</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>css=.accordion-content.showContent</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:53:09.416" endtime="20240229 00:53:09.452"/>
+</kw>
+<msg timestamp="20240229 00:53:09.452" level="INFO">${status} = True</msg>
+<status status="PASS" starttime="20240229 00:53:09.415" endtime="20240229 00:53:09.452"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${status}' == 'False'</arg>
+<arg>HomePageLogic.Open All Property Content by Index</arg>
+<arg>${index}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20240229 00:53:09.453" endtime="20240229 00:53:09.453"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:09.413" endtime="20240229 00:53:09.454"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:07.508" endtime="20240229 00:53:09.454"/>
+</iter>
+<iter>
+<var name="${i}">12</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${i}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20240229 00:53:09.454" endtime="20240229 00:53:09.455"/>
+</kw>
+<kw name="Get Property Title" library="HomepagePages">
+<arg>${i}</arg>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${property_title}</var>
+<arg>xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[${index}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20240229 00:53:09.500" level="INFO">${property_title} = Pabrik Disewa</msg>
+<status status="PASS" starttime="20240229 00:53:09.457" endtime="20240229 00:53:09.500"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${property_title}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20240229 00:53:09.501" level="INFO">${property_title} = Pabrik Disewa</msg>
+<status status="PASS" starttime="20240229 00:53:09.501" endtime="20240229 00:53:09.501"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:09.455" endtime="20240229 00:53:09.501"/>
+</kw>
+<kw name="Get Property Content Url By Index" library="HomepagePages">
+<arg>${i}</arg>
+<kw name="Get Element Attribute" library="SeleniumLibrary">
+<var>${property_url}</var>
+<arg>xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[${index}]</arg>
+<arg>href</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<msg timestamp="20240229 00:53:09.539" level="INFO">${property_url} = https://www.99.co/id/sewa/pabrik</msg>
+<status status="PASS" starttime="20240229 00:53:09.502" endtime="20240229 00:53:09.539"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${property_url}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20240229 00:53:09.540" level="INFO">${property_url} = https://www.99.co/id/sewa/pabrik</msg>
+<status status="PASS" starttime="20240229 00:53:09.540" endtime="20240229 00:53:09.540"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:09.502" endtime="20240229 00:53:09.540"/>
+</kw>
+<kw name="Click property By Index" library="HomepagePages">
+<arg>${i}</arg>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[${index}]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240229 00:53:09.543" level="INFO">Clicking element 'xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[12]'.</msg>
+<status status="PASS" starttime="20240229 00:53:09.542" endtime="20240229 00:53:11.566"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:09.541" endtime="20240229 00:53:11.566"/>
+</kw>
+<kw name="Verify Redirect To Expected Url" library="PropertyPagePages">
+<arg>${property_url}</arg>
+<kw name="Location Should Be" library="SeleniumLibrary">
+<arg>${Property_url}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<msg timestamp="20240229 00:53:11.592" level="INFO">Current location is 'https://www.99.co/id/sewa/pabrik'.</msg>
+<status status="PASS" starttime="20240229 00:53:11.567" endtime="20240229 00:53:11.592"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:11.566" endtime="20240229 00:53:11.593"/>
+</kw>
+<kw name="Verify User Already On Property Page Details" library="PropertyPageLogic">
+<kw name="Verify Search Bar" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>name=search-bar</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:53:11.597" endtime="20240229 00:53:11.709"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:11.595" endtime="20240229 00:53:11.710"/>
+</kw>
+<kw name="Verify Filter Section" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=filterOuter</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:53:11.724" endtime="20240229 00:53:12.234"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:11.722" endtime="20240229 00:53:12.234"/>
+</kw>
+<kw name="Verify Filter Quick Section" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=FilterQuick</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:53:12.235" endtime="20240229 00:53:12.329"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:12.234" endtime="20240229 00:53:12.329"/>
+</kw>
+<kw name="Verify Filter Sorting Section" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=FilterQuick__sort</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:53:12.330" endtime="20240229 00:53:12.360"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:12.329" endtime="20240229 00:53:12.360"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:11.593" endtime="20240229 00:53:12.360"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>PropertyPagePages.Verify Property Page Title</arg>
+<arg>${property_title}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Verify Property Page Title" library="PropertyPagePages">
+<arg>${property_title}</arg>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<arg>xpath=//div[@class="row"]//h1</arg>
+<arg>${saleProperty_title} di Indonesia</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<msg timestamp="20240229 00:53:12.391" level="FAIL">Element 'xpath=//div[@class="row"]//h1' should have contained text 'Pabrik Disewa di Indonesia' but its text was 'Sewa Pabrik di Indonesia'.</msg>
+<status status="FAIL" starttime="20240229 00:53:12.361" endtime="20240229 00:53:12.392"/>
+</kw>
+<status status="FAIL" starttime="20240229 00:53:12.361" endtime="20240229 00:53:12.392"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:12.360" endtime="20240229 00:53:12.392"/>
+</kw>
+<kw name="Go Back" library="SeleniumLibrary">
+<doc>Simulates the user clicking the back button on their browser.</doc>
+<status status="PASS" starttime="20240229 00:53:12.393" endtime="20240229 00:53:12.480"/>
+</kw>
+<kw name="Check If Property Content Is Visible" library="HomepageLogic">
+<arg>${i}</arg>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Wait Until Element Is Visible</arg>
+<arg>css=.accordion-content.showContent</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>css=.accordion-content.showContent</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:53:12.483" endtime="20240229 00:53:12.520"/>
+</kw>
+<msg timestamp="20240229 00:53:12.520" level="INFO">${status} = True</msg>
+<status status="PASS" starttime="20240229 00:53:12.482" endtime="20240229 00:53:12.520"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${status}' == 'False'</arg>
+<arg>HomePageLogic.Open All Property Content by Index</arg>
+<arg>${index}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20240229 00:53:12.520" endtime="20240229 00:53:12.521"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:12.480" endtime="20240229 00:53:12.521"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:09.454" endtime="20240229 00:53:12.521"/>
+</iter>
+<iter>
+<var name="${i}">13</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${i}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20240229 00:53:12.522" endtime="20240229 00:53:12.522"/>
+</kw>
+<kw name="Get Property Title" library="HomepagePages">
+<arg>${i}</arg>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${property_title}</var>
+<arg>xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[${index}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20240229 00:53:12.571" level="INFO">${property_title} = Gedung Bertingkat Disewa</msg>
+<status status="PASS" starttime="20240229 00:53:12.524" endtime="20240229 00:53:12.571"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${property_title}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20240229 00:53:12.572" level="INFO">${property_title} = Gedung Bertingkat Disewa</msg>
+<status status="PASS" starttime="20240229 00:53:12.571" endtime="20240229 00:53:12.572"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:12.523" endtime="20240229 00:53:12.572"/>
+</kw>
+<kw name="Get Property Content Url By Index" library="HomepagePages">
+<arg>${i}</arg>
+<kw name="Get Element Attribute" library="SeleniumLibrary">
+<var>${property_url}</var>
+<arg>xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[${index}]</arg>
+<arg>href</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<msg timestamp="20240229 00:53:12.613" level="INFO">${property_url} = https://www.99.co/id/sewa/gedung-bertingkat</msg>
+<status status="PASS" starttime="20240229 00:53:12.573" endtime="20240229 00:53:12.613"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${property_url}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20240229 00:53:12.614" level="INFO">${property_url} = https://www.99.co/id/sewa/gedung-bertingkat</msg>
+<status status="PASS" starttime="20240229 00:53:12.613" endtime="20240229 00:53:12.614"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:12.573" endtime="20240229 00:53:12.614"/>
+</kw>
+<kw name="Click property By Index" library="HomepagePages">
+<arg>${i}</arg>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[${index}]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240229 00:53:12.616" level="INFO">Clicking element 'xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[13]'.</msg>
+<status status="PASS" starttime="20240229 00:53:12.615" endtime="20240229 00:53:13.897"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:12.614" endtime="20240229 00:53:13.897"/>
+</kw>
+<kw name="Verify Redirect To Expected Url" library="PropertyPagePages">
+<arg>${property_url}</arg>
+<kw name="Location Should Be" library="SeleniumLibrary">
+<arg>${Property_url}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<msg timestamp="20240229 00:53:14.125" level="INFO">Current location is 'https://www.99.co/id/sewa/gedung-bertingkat'.</msg>
+<status status="PASS" starttime="20240229 00:53:13.900" endtime="20240229 00:53:14.126"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:13.898" endtime="20240229 00:53:14.126"/>
+</kw>
+<kw name="Verify User Already On Property Page Details" library="PropertyPageLogic">
+<kw name="Verify Search Bar" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>name=search-bar</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:53:14.128" endtime="20240229 00:53:14.373"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:14.128" endtime="20240229 00:53:14.374"/>
+</kw>
+<kw name="Verify Filter Section" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=filterOuter</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:53:14.375" endtime="20240229 00:53:14.442"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:14.374" endtime="20240229 00:53:14.444"/>
+</kw>
+<kw name="Verify Filter Quick Section" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=FilterQuick</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:53:14.445" endtime="20240229 00:53:14.474"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:14.444" endtime="20240229 00:53:14.474"/>
+</kw>
+<kw name="Verify Filter Sorting Section" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=FilterQuick__sort</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:53:14.475" endtime="20240229 00:53:14.504"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:14.474" endtime="20240229 00:53:14.504"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:14.126" endtime="20240229 00:53:14.505"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>PropertyPagePages.Verify Property Page Title</arg>
+<arg>${property_title}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Verify Property Page Title" library="PropertyPagePages">
+<arg>${property_title}</arg>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<arg>xpath=//div[@class="row"]//h1</arg>
+<arg>${saleProperty_title} di Indonesia</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<msg timestamp="20240229 00:53:14.535" level="FAIL">Element 'xpath=//div[@class="row"]//h1' should have contained text 'Gedung Bertingkat Disewa di Indonesia' but its text was 'Sewa Gedung di Indonesia'.</msg>
+<status status="FAIL" starttime="20240229 00:53:14.506" endtime="20240229 00:53:14.536"/>
+</kw>
+<status status="FAIL" starttime="20240229 00:53:14.506" endtime="20240229 00:53:14.536"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:14.505" endtime="20240229 00:53:14.536"/>
+</kw>
+<kw name="Go Back" library="SeleniumLibrary">
+<doc>Simulates the user clicking the back button on their browser.</doc>
+<status status="PASS" starttime="20240229 00:53:14.536" endtime="20240229 00:53:14.607"/>
+</kw>
+<kw name="Check If Property Content Is Visible" library="HomepageLogic">
+<arg>${i}</arg>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Wait Until Element Is Visible</arg>
+<arg>css=.accordion-content.showContent</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>css=.accordion-content.showContent</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:53:14.609" endtime="20240229 00:53:14.642"/>
+</kw>
+<msg timestamp="20240229 00:53:14.643" level="INFO">${status} = True</msg>
+<status status="PASS" starttime="20240229 00:53:14.609" endtime="20240229 00:53:14.643"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${status}' == 'False'</arg>
+<arg>HomePageLogic.Open All Property Content by Index</arg>
+<arg>${index}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20240229 00:53:14.643" endtime="20240229 00:53:14.644"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:14.607" endtime="20240229 00:53:14.644"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:12.521" endtime="20240229 00:53:14.644"/>
+</iter>
+<iter>
+<var name="${i}">14</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${i}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20240229 00:53:14.645" endtime="20240229 00:53:14.646"/>
+</kw>
+<kw name="Get Property Title" library="HomepagePages">
+<arg>${i}</arg>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${property_title}</var>
+<arg>xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[${index}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20240229 00:53:14.688" level="INFO">${property_title} = Kondotel Disewa</msg>
+<status status="PASS" starttime="20240229 00:53:14.648" endtime="20240229 00:53:14.689"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${property_title}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20240229 00:53:14.689" level="INFO">${property_title} = Kondotel Disewa</msg>
+<status status="PASS" starttime="20240229 00:53:14.689" endtime="20240229 00:53:14.690"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:14.646" endtime="20240229 00:53:14.690"/>
+</kw>
+<kw name="Get Property Content Url By Index" library="HomepagePages">
+<arg>${i}</arg>
+<kw name="Get Element Attribute" library="SeleniumLibrary">
+<var>${property_url}</var>
+<arg>xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[${index}]</arg>
+<arg>href</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<msg timestamp="20240229 00:53:14.722" level="INFO">${property_url} = https://www.99.co/id/sewa/kondotel</msg>
+<status status="PASS" starttime="20240229 00:53:14.691" endtime="20240229 00:53:14.722"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${property_url}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20240229 00:53:14.723" level="INFO">${property_url} = https://www.99.co/id/sewa/kondotel</msg>
+<status status="PASS" starttime="20240229 00:53:14.722" endtime="20240229 00:53:14.723"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:14.690" endtime="20240229 00:53:14.723"/>
+</kw>
+<kw name="Click property By Index" library="HomepagePages">
+<arg>${i}</arg>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[${index}]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240229 00:53:14.725" level="INFO">Clicking element 'xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[14]'.</msg>
+<status status="PASS" starttime="20240229 00:53:14.724" endtime="20240229 00:53:15.967"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:14.723" endtime="20240229 00:53:15.968"/>
+</kw>
+<kw name="Verify Redirect To Expected Url" library="PropertyPagePages">
+<arg>${property_url}</arg>
+<kw name="Location Should Be" library="SeleniumLibrary">
+<arg>${Property_url}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<msg timestamp="20240229 00:53:16.044" level="INFO">Current location is 'https://www.99.co/id/sewa/kondotel'.</msg>
+<status status="PASS" starttime="20240229 00:53:15.970" endtime="20240229 00:53:16.044"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:15.968" endtime="20240229 00:53:16.044"/>
+</kw>
+<kw name="Verify User Already On Property Page Details" library="PropertyPageLogic">
+<kw name="Verify Search Bar" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>name=search-bar</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:53:16.046" endtime="20240229 00:53:16.305"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:16.045" endtime="20240229 00:53:16.306"/>
+</kw>
+<kw name="Verify Filter Section" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=filterOuter</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:53:16.306" endtime="20240229 00:53:16.331"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:16.306" endtime="20240229 00:53:16.332"/>
+</kw>
+<kw name="Verify Filter Quick Section" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=FilterQuick</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:53:16.333" endtime="20240229 00:53:16.408"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:16.332" endtime="20240229 00:53:16.409"/>
+</kw>
+<kw name="Verify Filter Sorting Section" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=FilterQuick__sort</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:53:16.410" endtime="20240229 00:53:16.435"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:16.409" endtime="20240229 00:53:16.435"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:16.045" endtime="20240229 00:53:16.435"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>PropertyPagePages.Verify Property Page Title</arg>
+<arg>${property_title}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Verify Property Page Title" library="PropertyPagePages">
+<arg>${property_title}</arg>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<arg>xpath=//div[@class="row"]//h1</arg>
+<arg>${saleProperty_title} di Indonesia</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<msg timestamp="20240229 00:53:16.468" level="FAIL">Element 'xpath=//div[@class="row"]//h1' should have contained text 'Kondotel Disewa di Indonesia' but its text was 'Sewa Kondotel di Indonesia'.</msg>
+<status status="FAIL" starttime="20240229 00:53:16.437" endtime="20240229 00:53:16.468"/>
+</kw>
+<status status="FAIL" starttime="20240229 00:53:16.436" endtime="20240229 00:53:16.469"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:16.435" endtime="20240229 00:53:16.469"/>
+</kw>
+<kw name="Go Back" library="SeleniumLibrary">
+<doc>Simulates the user clicking the back button on their browser.</doc>
+<status status="PASS" starttime="20240229 00:53:16.469" endtime="20240229 00:53:16.539"/>
+</kw>
+<kw name="Check If Property Content Is Visible" library="HomepageLogic">
+<arg>${i}</arg>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Wait Until Element Is Visible</arg>
+<arg>css=.accordion-content.showContent</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>css=.accordion-content.showContent</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:53:16.541" endtime="20240229 00:53:16.577"/>
+</kw>
+<msg timestamp="20240229 00:53:16.577" level="INFO">${status} = True</msg>
+<status status="PASS" starttime="20240229 00:53:16.540" endtime="20240229 00:53:16.577"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${status}' == 'False'</arg>
+<arg>HomePageLogic.Open All Property Content by Index</arg>
+<arg>${index}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20240229 00:53:16.577" endtime="20240229 00:53:16.578"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:16.539" endtime="20240229 00:53:16.579"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:14.644" endtime="20240229 00:53:16.579"/>
+</iter>
+<iter>
+<var name="${i}">15</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${i}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20240229 00:53:16.579" endtime="20240229 00:53:16.580"/>
+</kw>
+<kw name="Get Property Title" library="HomepagePages">
+<arg>${i}</arg>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${property_title}</var>
+<arg>xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[${index}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20240229 00:53:16.621" level="INFO">${property_title} = Toko Disewa</msg>
+<status status="PASS" starttime="20240229 00:53:16.581" endtime="20240229 00:53:16.621"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${property_title}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20240229 00:53:16.622" level="INFO">${property_title} = Toko Disewa</msg>
+<status status="PASS" starttime="20240229 00:53:16.621" endtime="20240229 00:53:16.622"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:16.580" endtime="20240229 00:53:16.622"/>
+</kw>
+<kw name="Get Property Content Url By Index" library="HomepagePages">
+<arg>${i}</arg>
+<kw name="Get Element Attribute" library="SeleniumLibrary">
+<var>${property_url}</var>
+<arg>xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[${index}]</arg>
+<arg>href</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<msg timestamp="20240229 00:53:16.663" level="INFO">${property_url} = https://www.99.co/id/sewa/toko</msg>
+<status status="PASS" starttime="20240229 00:53:16.623" endtime="20240229 00:53:16.663"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${property_url}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20240229 00:53:16.664" level="INFO">${property_url} = https://www.99.co/id/sewa/toko</msg>
+<status status="PASS" starttime="20240229 00:53:16.663" endtime="20240229 00:53:16.664"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:16.622" endtime="20240229 00:53:16.664"/>
+</kw>
+<kw name="Click property By Index" library="HomepagePages">
+<arg>${i}</arg>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[${index}]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240229 00:53:16.666" level="INFO">Clicking element 'xpath=//div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a[15]'.</msg>
+<status status="PASS" starttime="20240229 00:53:16.665" endtime="20240229 00:53:17.637"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:16.665" endtime="20240229 00:53:17.637"/>
+</kw>
+<kw name="Verify Redirect To Expected Url" library="PropertyPagePages">
+<arg>${property_url}</arg>
+<kw name="Location Should Be" library="SeleniumLibrary">
+<arg>${Property_url}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<msg timestamp="20240229 00:53:17.901" level="INFO">Current location is 'https://www.99.co/id/sewa/toko'.</msg>
+<status status="PASS" starttime="20240229 00:53:17.638" endtime="20240229 00:53:17.902"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:17.637" endtime="20240229 00:53:17.902"/>
+</kw>
+<kw name="Verify User Already On Property Page Details" library="PropertyPageLogic">
+<kw name="Verify Search Bar" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>name=search-bar</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:53:17.903" endtime="20240229 00:53:17.967"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:17.903" endtime="20240229 00:53:17.967"/>
+</kw>
+<kw name="Verify Filter Section" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=filterOuter</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:53:17.968" endtime="20240229 00:53:17.991"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:17.967" endtime="20240229 00:53:17.991"/>
+</kw>
+<kw name="Verify Filter Quick Section" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=FilterQuick</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:53:17.992" endtime="20240229 00:53:18.097"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:17.992" endtime="20240229 00:53:18.098"/>
+</kw>
+<kw name="Verify Filter Sorting Section" library="PropertyPagePages">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=FilterQuick__sort</arg>
+<arg>timeout=${MIN_TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:53:18.098" endtime="20240229 00:53:18.132"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:18.098" endtime="20240229 00:53:18.132"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:17.902" endtime="20240229 00:53:18.132"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>PropertyPagePages.Verify Property Page Title</arg>
+<arg>${property_title}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Verify Property Page Title" library="PropertyPagePages">
+<arg>${property_title}</arg>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<arg>xpath=//div[@class="row"]//h1</arg>
+<arg>${saleProperty_title} di Indonesia</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<msg timestamp="20240229 00:53:18.157" level="FAIL">Element 'xpath=//div[@class="row"]//h1' should have contained text 'Toko Disewa di Indonesia' but its text was 'Sewa Toko di Indonesia'.</msg>
+<status status="FAIL" starttime="20240229 00:53:18.133" endtime="20240229 00:53:18.157"/>
+</kw>
+<status status="FAIL" starttime="20240229 00:53:18.133" endtime="20240229 00:53:18.158"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:18.132" endtime="20240229 00:53:18.158"/>
+</kw>
+<kw name="Go Back" library="SeleniumLibrary">
+<doc>Simulates the user clicking the back button on their browser.</doc>
+<status status="PASS" starttime="20240229 00:53:18.158" endtime="20240229 00:53:18.219"/>
+</kw>
+<kw name="Check If Property Content Is Visible" library="HomepageLogic">
+<arg>${i}</arg>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${status}</var>
+<arg>Wait Until Element Is Visible</arg>
+<arg>css=.accordion-content.showContent</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>css=.accordion-content.showContent</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240229 00:53:18.220" endtime="20240229 00:53:18.245"/>
+</kw>
+<msg timestamp="20240229 00:53:18.246" level="INFO">${status} = True</msg>
+<status status="PASS" starttime="20240229 00:53:18.220" endtime="20240229 00:53:18.246"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${status}' == 'False'</arg>
+<arg>HomePageLogic.Open All Property Content by Index</arg>
+<arg>${index}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20240229 00:53:18.246" endtime="20240229 00:53:18.246"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:18.219" endtime="20240229 00:53:18.246"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:16.579" endtime="20240229 00:53:18.247"/>
+</iter>
+<status status="PASS" starttime="20240229 00:52:49.406" endtime="20240229 00:53:18.247"/>
+</for>
+<status status="PASS" starttime="20240229 00:52:49.364" endtime="20240229 00:53:18.247"/>
+</kw>
+<kw name="Capture Failed and Close All Browsers" library="TestTeardown" type="TEARDOWN">
+<kw name="Capture Page If Test Failed" library="TestTeardown">
+<kw name="Run Keyword If Test Failed" library="BuiltIn">
+<arg>Capture Page Screenshot</arg>
+<doc>Runs the given keyword with the given arguments, if the test failed.</doc>
+<status status="PASS" starttime="20240229 00:53:18.249" endtime="20240229 00:53:18.249"/>
+</kw>
+<kw name="Run Keyword If Test Failed" library="BuiltIn">
+<arg>Capture Current Location</arg>
+<doc>Runs the given keyword with the given arguments, if the test failed.</doc>
+<status status="PASS" starttime="20240229 00:53:18.250" endtime="20240229 00:53:18.250"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:18.248" endtime="20240229 00:53:18.250"/>
+</kw>
+<kw name="Close All Browsers" library="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20240229 00:53:18.250" endtime="20240229 00:53:18.555"/>
+</kw>
+<status status="PASS" starttime="20240229 00:53:18.248" endtime="20240229 00:53:18.555"/>
+</kw>
+<status status="PASS" starttime="20240229 00:52:45.838" endtime="20240229 00:53:18.555"/>
+</test>
+<status status="PASS" starttime="20240229 00:52:44.936" endtime="20240229 00:53:18.557"/>
+</suite>
+<status status="PASS" starttime="20240229 00:52:44.913" endtime="20240229 00:53:18.558"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Test">Test</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="Open Property Url">Test.Open Property Url</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
