@@ -5,19 +5,19 @@ Open Property One By One
         Log To Console       ${i}       
         HomepagePages.Get Property Title                       ${i}
         HomepagePages.Get Property Content Url By Index        ${i}
-        HomepagePages.Click property By Index                  ${i}
+        #HomepagePages.Click property By Index                  ${i}
+        HomepagePages.Click Property In The New Tab            ${property_url}
+        ${tab1}                 Switch Window                  NEW
         PropertyPagePages.Verify Redirect To Expected Url      ${property_url}
         PropertyPageLogic.Verify User Already On Property Page Details
         BuiltIn.Run Keyword And Ignore Error        PropertyPagePages.Verify Property Page Title                ${property_title}
-        Go Back
-        Check If Property Content Is Visible                   ${i}
-        # Scroll To Property Section
-        # Show All Sale Property Content by Index         2
+        Close Window
+        Switch Window    MAIN
     END
 
 Check If Property Content Is Visible
     [Arguments]         ${index}
-    ${status}           Run Keyword And Return Status       Wait Until Element Is Visible      css=.accordion-content.showContent
+    ${status}           Run Keyword And Return Status       HomepagePages.Verify Property Content List Is Visible
     Run Keyword If      '${status}' == 'False'              HomePageLogic.Open All Property Content by Index       ${index}
 
 Open All Property Content by Index

@@ -8,7 +8,10 @@ Verify Property Content Section Is Visible
 Click All Property Content by Index
     [Arguments]                 ${index}
     Click Button                xpath=//div[@class="accordion"][${index}]//button                                                                  
- 
+
+Verify Property Content List Is Visible
+    Wait Until Element Is Visible      css=.accordion-content.showContent
+    
 Get Count Property Content
     ${total_content}=           Get Element Count                  //div[contains(@class, 'accordion-content') and contains(@class, 'showContent')]/a              
     Set Test Variable           ${total_content}
@@ -30,3 +33,7 @@ Click property By Index
 Open Property Page url With New Tab
     [Arguments]                 ${Property_url}
     Execute Javascript          window.open('${Property_url}');
+
+Click Property In The New Tab
+    [Arguments]                 ${property_url}
+    Execute JavaScript          window.open('${property_url}', '_blank')
