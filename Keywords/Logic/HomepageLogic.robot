@@ -5,7 +5,6 @@ Open Property One By One
         Log To Console       ${i}       
         HomepagePages.Get Property Title                       ${i}
         HomepagePages.Get Property Content Url By Index        ${i}
-        #HomepagePages.Click property By Index                  ${i}
         HomepagePages.Click Property In The New Tab            ${property_url}
         ${tab1}                 Switch Window                  NEW
         PropertyPagePages.Verify Redirect To Expected Url      ${property_url}
