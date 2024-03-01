@@ -14,10 +14,12 @@ Library          Process
 
 Resource        TestSetup.robot
 Resource        TestTeardown.robot
+Resource        Test_data.robot
 Resource        Keywords/Page/HomepagePages.robot
 Resource        Keywords/Logic/HomepageLogic.robot
 Resource        Keywords/Page/PropertyPagePages.robot
 Resource        Keywords/Logic/PropertyPageLogic.robot
+Resource        Keywords/Page/SearchPagePages.robot
 
 *** Variable ***
 ${SERVER}                 https://www.99.co/id

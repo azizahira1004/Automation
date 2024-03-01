@@ -37,3 +37,30 @@ Open Property Page url With New Tab
 Click Property In The New Tab
     [Arguments]                 ${property_url}
     Execute JavaScript          window.open('${property_url}', '_blank')
+
+Open List Of Property
+    Click Element               css=.has-value           
+
+Select Type Of Property
+    [Arguments]         ${typeOfproperty}
+    Click Element       xpath=//ul[contains(@class,'ui-molecules-select__field-options')]//li[contains(text(),"${typeOfproperty}")]
+
+Verify Search Section
+    Wait Until Element Is Visible           css=.searchBarHome                  timeout=${MIN_TIMEOUT}
+
+Open Property List
+    Click Element                           xpath=//div[@class="searchBarHome--main__col"]//div[@class="ui-molecules-select searchBarHome--main__filter_select"]
+    
+Verify Property List Is Visible    
+    Page Should Contain Element             xpath=//ul[contains(@class,'ui-molecules-select__field-options-position-bottom')]      
+
+Input City
+    [Arguments]           ${city}
+    Input Text                              search-bar              ${city}
+
+Click Submit Button
+    Click Button                            css=.searchBarHome--submit
+
+Verify Selected Url
+    [Arguments]                             ${typeOfproperty}    
+    Location Should Contain                 /${typeOfproperty}/
