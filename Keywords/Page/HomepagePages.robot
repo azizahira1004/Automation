@@ -64,3 +64,6 @@ Click Submit Button
 Verify Selected Url
     [Arguments]                             ${typeOfproperty}    
     Location Should Contain                 /${typeOfproperty}/
+
+Click Tab Saya Ingin Sewa
+    Click Element    xpath=//button[@class='searchBarHome--price__button ui-atomic-button ui-atomic-button__size-default ui-atomic-button__theme-default']/span[text()='Saya ingin Sewa']
