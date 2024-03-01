@@ -6,8 +6,7 @@ Test Teardown     TestTeardown.Capture Failed and Close All Browsers
 *** Test Cases ***
 Search For Want To Buy Property by Spesific Type and Location
     Verify Search Section
-    Open Property List
-    Verify Property List Is Visible     
+    Check If List Property on Search Content Is Visible    
     Select Type Of Property                 ${komersialProperty}    
     Input City                              ${city1}
     Click Submit Button
@@ -17,8 +16,7 @@ Search For Want To Buy Property by Spesific Type and Location
 Search For Want To Rent Property by Spesific Type and Location
     Verify Search Section
     Click Tab Saya Ingin Sewa
-    Open Property List
-    Verify Property List Is Visible     
+    Check If List Property on Search Content Is Visible   
     Select Type Of Property                 ${kostProperty}    
     Input City                              ${city2}
     Click Submit Button

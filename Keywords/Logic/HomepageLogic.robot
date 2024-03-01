@@ -23,3 +23,8 @@ Open All Property Content by Index
     [Arguments]         ${index}
     HomepagePages.Verify Property Content Section Is Visible
     HomepagePages.Click All Property Content by Index           ${index}
+
+Check If List Property on Search Content Is Visible
+    HomepagePages.Open Property List
+    ${status}           Run Keyword And Return Status       HomepagePages.Verify Property List Is Visible
+    Run Keyword If      '${status}' == 'False'              HomepagePages.Open Property List
