@@ -8,3 +8,7 @@ Open Chrome Browser
 Open Homepage
     Open Chrome Browser
     Go To               ${SERVER}
+
+Open Login Page
+    Open Chrome Browser
+    Go To               ${LOGIN_PAGE}

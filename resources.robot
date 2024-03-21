@@ -20,9 +20,13 @@ Resource        Keywords/Logic/HomepageLogic.robot
 Resource        Keywords/Page/PropertyPagePages.robot
 Resource        Keywords/Logic/PropertyPageLogic.robot
 Resource        Keywords/Page/SearchPagePages.robot
+Resource        Keywords/Page/LoginPages.robot
+Resource        Keywords/Logic/LoginLogic.robot
+Resource        Keywords/Page/DashboardPages.robot
 
 *** Variable ***
-${SERVER}                 https://www.99.co/id
+${SERVER}                 https://beta.astrnt.co/
+${LOGIN_PAGE}             https://beta.astrnt.co/auth/login
 ${BROWSER}                gc
 ${BROWSER_ALIAS}          Chrome
 ${DELAY}                  0

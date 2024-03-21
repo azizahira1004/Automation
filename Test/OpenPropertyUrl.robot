@@ -16,3 +16,4 @@ Open All Property For Rent Url
     HomepageLogic.Open All Property Content by Index       2
     HomepageLogic.Check If Property Content Is Visible     2
     HomepageLogic.Open Property One By One
+
